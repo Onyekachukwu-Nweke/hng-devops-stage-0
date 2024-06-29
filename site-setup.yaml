@@ -1,0 +1,41 @@
+- hosts: web
+  become: yes
+  tasks:
+    - name: Install required packages
+      apt:
+        name:
+          - nginx
+          - git
+        state: present
+        update_cache: yes
+
+    - name: Clone the project from GitHub
+      git:
+        repo: 'https://github.com/Onyekachukwu-Nweke/hng-devops-stage-0.git'
+        dest: /var/www/html/hng-devops-stage-0
+        version: main
+        clone: false
+
+    - name: Configure Nginx to serve the application
+      template:
+        src: templates/hng-nginx.conf.j2
+        dest: /etc/nginx/sites-available/hng-stage-0
+
+    - name: Enable Nginx configuration
+      file:
+        src: /etc/nginx/sites-available/hng-stage-0
+        dest: /etc/nginx/sites-enabled/hng-stage-0
+        state: link
+
+    - name: Remove default Nginx configuration
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      notify:
+        - restart nginx
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted

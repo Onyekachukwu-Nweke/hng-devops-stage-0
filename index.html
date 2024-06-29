@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Onyekachukwu Nweke's Portfolio</title>
+  <link rel="stylesheet" type="text/css" href="styles/index.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="bubble-loader">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+  </div>
+  <header>
+    <h1>Welcome to Onyekachukwu Nweke's Portfolio</h1>
+  </header>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello, my name is Onyekachukwu Nweke, and I am a DevOps Engineer.</p>
+      <p>I am currently participating in the <a href="https://hng.tech" target="_blank">HNG Internship</a>.</p>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Username: OnyekachukwuNweke</p>
+      <p>Email: nwekeejioforscheller@gmail.com</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Onyekachukwu Nweke</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.getElementById('loader').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Enable scrolling
+      }, 1000); // 10 seconds delay
+    });
+  </script>
+</body>
+</html>
